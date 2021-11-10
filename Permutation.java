@@ -8,7 +8,7 @@ class Permutation {
         return res;
     }
     
-    private void backTracking(int[] nums, int i, boolean[] visited, LinkedList<Integer> cur) {
+    private void backTracking(int[] nums, boolean[] visited, LinkedList<Integer> cur) {
         if (cur.size() == nums.length) {
             res.add(new ArrayList<>(cur));
             return;
@@ -18,7 +18,7 @@ class Permutation {
             if (visited[j]) continue;
             cur.add(nums[j]);
             visited[j] = true;
-            backTracking(nums, j, visited, cur);
+            backTracking(nums, visited, cur);
             cur.removeLast();
             visited[j] = false;
         }
