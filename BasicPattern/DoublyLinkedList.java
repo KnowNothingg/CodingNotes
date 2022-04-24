@@ -1,6 +1,8 @@
+package BasicPattern;
+
 public class DoublyLinkedList{
 	
-	class Node() {
+	class Node {
 		String val;
 		Node prev;
 		Node next;
@@ -10,6 +12,7 @@ public class DoublyLinkedList{
 		}
 	}
 
+	Node head = null;
 
 	// add new node in the beginning (head)
 	public void push(String data) {
@@ -23,6 +26,15 @@ public class DoublyLinkedList{
 		}
 
 		head = newNode;
+	}
+
+	public void pushNode(Node newNode) {
+		newNode.next = head;
+		newNode.prev = null;
+
+		if (head != null) {
+			head.prev = newNode;
+		}
 	}
 
 
@@ -39,7 +51,7 @@ public class DoublyLinkedList{
 		previous.next = newNode;
 
 		if (newNode.next != null) {
-			newNode.next.previous = newNode;
+			newNode.next.prev = newNode;
 		}
 	}
 
@@ -48,7 +60,7 @@ public class DoublyLinkedList{
 		Node newNode = new Node(data);
 
 		if (head == null) {
-			push(newNode);
+			pushNode(newNode);
 			return;
 		}
 
@@ -87,7 +99,7 @@ public class DoublyLinkedList{
 
 	public void moveToHead(Node cur) {
 		remove(cur);
-		push(cur);
+		pushNode(cur);
 	}
 
 	public Node popTail() {

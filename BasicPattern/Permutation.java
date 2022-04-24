@@ -1,10 +1,17 @@
+package BasicPattern;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
 class Permutation {
     private List<List<Integer>> res;
     public List<List<Integer>> permute(int[] nums) {
         res = new ArrayList<>();
         boolean[] visited = new boolean[nums.length];
         Arrays.fill(visited, false);
-        backTracking(nums, 0, visited, new LinkedList<Integer>());
+        backTracking(nums, visited, new LinkedList<Integer>());
         return res;
     }
     
